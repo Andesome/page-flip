@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei";
+    font-size: 15px;
+}
+
+.flip-wrap{
+    position: relative;
+    margin: 0 auto;
+    background-image: url(../images/pagebg.jpg);
+    width: 680px;
+    height: 480px;
+    overflow: hidden;
+    perspective: 3000px;
+}
+.preserve-3d{
+    transform-style: preserve-3d;
+}
+.book-wrap{
+    width: 250px;
+    height: 360px;
+    position: absolute;
+    left: 50%;
+    top: 50px;
+}
+.book-wrap .page{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height:100%;
+}
+.book-wrap .page img {
+    width: 100%;
+    height: 100%;
+}
+.book-wrap .page{
+    width: 100%;
+    height: 100%;
+    transition-property: transform, transform-origin;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+}
+.book-wrap .p1:before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .25)), to(rgba(0, 0, 0, 0)));
+}
+.flip-wrap:hover .p1{
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+}
+.flip-wrap:hover .p2{
+    transform: rotateY(-180deg);
+}
+.flip-wrap:hover .p2>img{
+    transform: rotateY(-180deg);
+}
+
+
+.book-wrap .point{
+    transform-origin: 0 80%;
+}
+
+
+
+
+/* 卷角 */
+.test-layer{
+    position: relative;
+    width: 200px;
+    height: 300px;
+    background-color: #5a3c23;
+    margin: 0 auto;
+    border: 1px solid #bbb;
+}
+.test-layer.corner:before{
+    content: "";
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 0 solid;
+    border-top: 200px solid #fff;
+    border-left: 200px solid #bbb;
+    /*border-radius: 15px;*/
+    /*border-bottom-left-radius: 30px;*/
+}
+.ly-corner{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 0;
+    height: 0;
+    display: block;
+    border: 0 solid;
+    box-shadow: -3px 3px 7px rgba(0,0,0,0.3);
+    /*border-top: 200px solid #fff;*/
+    /*border-left: 200px solid #bbb;*/
+    background: linear-gradient(to left bottom, #fff 0% ,red 100%)
+}
+.test-layer:hover .ly-corner{
+    border-top: 50px solid #fff;
+    border-left: 50px solid #ccc;
+    transition: all 0.25s;
+    background: linear-gradient(to left bottom, #fff 0% ,red 100%)
+}
